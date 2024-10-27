@@ -4,11 +4,15 @@ const Contact = () => {
   return (
     <div>
       <h1>お問い合わせフォーム</h1>
+      <h2>以下にお客様の情報を入力してください。</h2>
+      <span title="close">X</span>
       <p>すべてのフィールドは必須項目です。</p>
+      <img src="https://sample_img.png" alt="sample alt" />
+      <div data-testid="custom-element">カスタムHTML</div>
       <form action="">
         <div>
           <label htmlFor="name">お名前</label>
-          <input type="text" id="name" />
+          <input type="text" id="name" placeholder="フルネーム" value="SaltyEight" onChange={() => {}} />
         </div>
         <div>
           <label htmlFor="email">メールアドレス</label>
