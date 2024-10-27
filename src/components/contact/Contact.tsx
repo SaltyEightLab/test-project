@@ -11,6 +11,10 @@ const Contact = () => {
           <input type="text" id="name" />
         </div>
         <div>
+          <label htmlFor="email">メールアドレス</label>
+          <input type="email" id="email" />
+        </div>
+        <div>
           <label htmlFor="questions">お問い合わせ内容</label>
           <select id="questions">
             <option value="">お問い合わせ内容を選択してください。</option>
