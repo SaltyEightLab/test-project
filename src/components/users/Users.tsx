@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { UsersType, UserType } from './Users.types';
+
+export const fetchUsers = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  if (!res.ok) {
+    throw new Error('Failed to fetch order data');
+  }
+  return res.json();
+};
+
 const Users = () => {
   const [users, setUsers] = useState<string[]>([]);
 
+  const getUsers = async () => {
+    const data = await fetchUsers();
+    setUsers(data.map((user: UserType) => user.name));
+  };
+
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((data: UsersType) =>
-        setUsers(data.map((user: UserType) => user.name))
-      );
+    getUsers();
   }, []);
 
   return (
