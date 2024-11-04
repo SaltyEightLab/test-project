@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 type FormData = {
-  name: string;
+  fullName: string;
   email: string;
   question: string;
   terms: boolean;
@@ -9,7 +9,7 @@ type FormData = {
 
 const Contact = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
+    fullName: '',
     email: '',
     question: '',
     terms: false,
@@ -21,11 +21,16 @@ const Contact = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value, type } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]:
-        type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
-    }));
+
+    setFormData((prev) => {
+      const inputValue =
+        type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+
+      return {
+        ...prev,
+        [name]: inputValue,
+      };
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,7 +40,7 @@ const Contact = () => {
 
   const handleReset = () => {
     setFormData({
-      name: '',
+      fullName: '',
       email: '',
       question: '',
       terms: false,
@@ -54,15 +59,15 @@ const Contact = () => {
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">お名前</label>
+            <label htmlFor="fullName">お名前</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
               onChange={handleChange}
               required
-              aria-invalid={formData.name === ''}
+              aria-invalid={formData.fullName === ''}
             />
           </div>
           <div>
