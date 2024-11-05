@@ -12,17 +12,5 @@ test.describe('基本的なアプリケーションテスト', () => {
       name: 'お問い合わせフォーム',
     });
     await expect(contactForm).toBeVisible();
-
-    // Counterコンポーネントの確認
-    const incrementButton = await page.getByRole('button', {
-      name: 'Increment',
-    });
-    await expect(incrementButton).toBeVisible();
-
-    // Usersコンポーネントの確認
-    const usersHeading = await page.getByRole('heading', {
-      name: 'Users',
-    });
-    await expect(usersHeading).toBeVisible();
   });
 });
